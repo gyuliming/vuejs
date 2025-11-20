@@ -1,0 +1,7 @@
+http://도메인/home => home과 관련된 페이지를 표시
+http://도메인/mypage => mypage와 관련된 페이지를 표시
+
+Vuejs는 SPA 기반이라서 자체적으로 라우팅 기술 제공 X 
+  => 라우팅을 지원하는 외부 라이브러리를 설치해서 사용해야함(npm install vue-router@version)
+
+

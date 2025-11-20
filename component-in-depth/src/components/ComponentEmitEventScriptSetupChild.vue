@@ -3,6 +3,7 @@ import { ref } from 'vue';
 
 // 사용자 입력 저장
 const greet = ref('');
+const name = ref('');
 
 // 상위로 보낼 이벤트 정의
 // payload 검증이 가능한 형태로 defineEmits 사용
@@ -18,6 +19,15 @@ const emit = defineEmits({
       return false;
     }
   },
+
+  greetingWelcomeEvent: (payload) => {
+    if (payload.trim().length > 0) { 
+      return true;
+    } else {
+      console.warn('이름을 입력하세요 !!!');
+      return false;
+    }
+  }
 });
 </script>
 

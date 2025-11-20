@@ -8,7 +8,7 @@ defineProps({
 });
 
 // 하위에서 emit을 받으면 message 내용이 갱신됨
-const message = ref('');
+const message = ref([]);
 
 // (이벤트 1) 인자 없는 greeting 이벤트
 // Child에서 greeting-event 버튼을 클릭하면 실행됨
@@ -17,12 +17,12 @@ const greet = () => {
 };
 
 // (이벤트 2) Child가 인자를 전달할 때
-const greetArg = (greet) => {
-  message.value = greet; // payload 반영
+const greetArg = (msg) => {
+  message.value.push = msg; // payload 반영
 };
 
 const greetWelcome = (name) => {
-  message.value = '${name}님 환영합니다!'; // payload
+  message.value = `${name}님 환영합니다!`; // payload
 };
 </script>
 
@@ -35,9 +35,15 @@ const greetWelcome = (name) => {
     <ComponentEmitEventScriptSetupChild
       v-on:greeting-event="greet"
       @greeting-arg-event="greetArg"
+      @greeting-welcome-event="greetWelcome"
     />
 
     <!-- 하위 emit 처리 결과 표시 -->
-    <h3>{{ message }}</h3>
+    <h3>메시지 리스트</h3>
+    <ul>
+      <li v-for="(m, i) in messages" :key="i">
+        {{ m }}
+      </li>
+    </ul>
   </div>
 </template>
